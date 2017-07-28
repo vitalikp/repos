@@ -30,8 +30,11 @@ $(ARCH): $(PACKAGE)
 	@echo "archive “$@” created"
 
 $(PACKAGE): $(SPECFILE) $(REPOS)
-	@tar --transform "s/^/$@\//" -cf $@.tar $(SPECFILE) $(REPOS)
+	@tar --transform "s/^/$@\//" -cf $@.tar $(SPECFILE) rpm-gpg $(REPOS)
 	@xz $@.tar
+
+sign: $(RPMFILE)
+	rpmsign --addsign $(RPMFILE)
 
 clean:
 	@rm -f $(ARCH)

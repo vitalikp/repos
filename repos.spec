@@ -18,11 +18,18 @@ vitalikp rpm packages repository.
 %build
 
 %install
+# install public keys
+install -d -m 755 %{buildroot}/etc/pki/rpm-gpg
+install -m 644 rpm-gpg/RPM-GPG-KEY* %{buildroot}/etc/pki/rpm-gpg/
+
+# install repos
 install -d -m 755 %{buildroot}%{_sysconfdir}/yum.repos.d
 for file in vitalikp*repo ; do
   install -m 644 $file %{buildroot}%{_sysconfdir}/yum.repos.d
 done
 
 %files
+%dir %{_sysconfdir}/pki/rpm-gpg
+%{_sysconfdir}/pki/rpm-gpg/RPM-GPG-KEY-vitalikp
 %dir %{_sysconfdir}/yum.repos.d
 %config(noreplace) %{_sysconfdir}/yum.repos.d/vitalikp.repo
