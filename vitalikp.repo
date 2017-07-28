@@ -1,0 +1,6 @@
+[vitalikp]
+name=vitalikp — $basearch
+baseurl=https://vitalikp.github.io/repo/rpm/$basearch/
+enabled=1
+metadata_expire=7d
+gpgcheck=0
