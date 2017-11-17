@@ -1,5 +1,5 @@
 Name:		vitalikp-repos
-Version:	0.1
+Version:	0.2
 Release:	1
 Summary:	rpm packages repository
 
